@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+state/*.json
+*.pdf
+*.tsv
+.mcp.json
+.playwright-mcp/

@@ -1,0 +1,17 @@
+{
+  "name": "suica-moneyforward",
+  "version": "1.0.0",
+  "description": "Mobile Suica → MoneyForward ME RPA",
+  "main": "dist/main.js",
+  "scripts": {
+    "import": "tsx src/import-tsv.ts"
+  },
+  "dependencies": {
+    "playwright": "^1.50.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
