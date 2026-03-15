@@ -82,6 +82,7 @@ async function main() {
 
   // 支出のみ登録（正の金額 = チャージ・入金はスキップ）
   const expenses = rows.filter((r) => r.amount < 0);
+  const incomes = rows.filter((r) => r.amount > 0);
   console.log(`TSV読み込み完了: 全${rows.length}件中 支出${expenses.length}件を登録します`);
 
   const browser = await chromium.launch({ headless: false });
@@ -289,6 +290,14 @@ async function main() {
   }
 
   console.log(`\n完了: 成功${successCount}件 / 失敗${failCount}件`);
+
+  if (incomes.length > 0) {
+    console.log(`\n--- 振替、手動登録が必要な履歴 (${incomes.length}件) ---`);
+    for (const r of incomes) {
+      console.log(`  ${r.date}\t${r.subject}\t+${r.amount.toLocaleString()}`);
+    }
+  }
+
   await browser.close();
 }
 
